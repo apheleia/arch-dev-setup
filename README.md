@@ -7,6 +7,7 @@ Setting up a dev machine with arch linux.
 - Arch base system
 - Network ([Devices](https://wiki.archlinux.org/index.php/Network_configuration#Device_names) and [DHCP](https://wiki.archlinux.org/index.php/Systemd-networkd#Basic_DHCP_network))
 - git (`pacman -S git-core`)
+- clone this repo (`git clone https://github.com/apheleia/arch-dev-setup.git`)
 
 ## Usage
 
