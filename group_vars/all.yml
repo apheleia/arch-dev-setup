@@ -5,4 +5,6 @@ graphics_driver_packages:
   - "mesa-libgl"
   - "libva"
   - "libva-intel-driver"
+input_drivers:
+  - "xf86-input-synaptics"
 terminal_emulator: "rxvt-unicode"

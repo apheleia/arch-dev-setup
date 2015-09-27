@@ -14,6 +14,13 @@
   tags:
     - graphics
 
+- name: Install input drivers
+  pacman: name="{{ item }}"
+          state=present
+  with_items: "{{ input_drivers }}"
+  tags:
+    - graphics
+
 - name: Install Gnome Display Manager
   pacman: name=gdm
           state=present
