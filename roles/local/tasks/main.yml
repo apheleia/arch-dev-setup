@@ -1,8 +1,11 @@
 ---
-- name: Creating user {{ username }}
-  user: name="{{ username }}"
-        groups=sudoers
-        createhome=yes
-        generate_ssh_key=yes
-  tags:
-    - user
+- name: Update pacman
+  pacman: update_cache=yes
+
+- name: Upgrade with pacman
+  pacman: upgrade=yes
+
+- name: Update all packages with pacman
+  pacman: name=* state=latest
+
+- include: users.yml
