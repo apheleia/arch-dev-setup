@@ -20,6 +20,11 @@
   tags:
     - graphics
 
+- name: Enable gdm module
+  command: systemctl enable gdm
+  tags:
+    - graphics
+
 - name: Install i3
   pacman: name=i3
           state=present
