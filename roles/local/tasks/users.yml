@@ -5,9 +5,17 @@
   tags:
     - users
 
+- name: Create group "sudo"
+  group: name=sudo
+  tags:
+    - users
+
+- name: Copying file "sudoers"
+  template: src=sudoers.j2 dest=/etc/sudoers validate='visudo -cf %s'
+
 - name: Creating user "{{ username }}"
   user: name="{{ username }}"
-        groups=sudoers
+        groups=sudo
         createhome=yes
         generate_ssh_key=yes
   tags:
