@@ -5,4 +5,4 @@
   tags:
     - system
 
-include: atom.yml
+- include: atom.yml

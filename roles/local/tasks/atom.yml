@@ -12,8 +12,8 @@
   tags:
     - programs
 
-- name: Make atom editor
-  command: makepkg -cfs
+- name: Make atom editor (grab a coffee)
+  command: makepkg -cfs --noconfirm
            chdir="/home/{{ username }}/downloads/aur/atom-editor"
   tags:
     - programs
