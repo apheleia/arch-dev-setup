@@ -43,7 +43,7 @@
     - programs
 
 - name: Secure MySQL
-  command: mysql_secure_installation
+  debug: msg="You still need to secure mysql `mysql_secure_installation`!"
   tags:
     - programs
 
