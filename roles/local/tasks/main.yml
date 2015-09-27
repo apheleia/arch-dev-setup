@@ -81,6 +81,8 @@
     - "pdo_mysql"
     - "bcmath"
     - "soap"
+    - "phar"
+    - "openssl"
   sudo: yes
   tags:
     - programs
