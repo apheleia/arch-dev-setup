@@ -5,7 +5,4 @@
 - name: Upgrade with pacman
   pacman: upgrade=yes
 
-- name: Update all packages with pacman
-  pacman: name=* state=latest
-
 - include: users.yml
