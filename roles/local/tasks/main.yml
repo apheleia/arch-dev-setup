@@ -18,6 +18,9 @@
   tags:
     - programs
 
-- name: Install atom editor
-  command: makepkg -sri
+- name: Make atom editor
+  command: makepkg -cf
            chdir="/home/{{ username }}/downloads/aur/atom-editor"
+
+- name: Install atom editor
+  debug: msg="You still need to install atom using `pacman -U --noconfirm <atom_package>`!"
