@@ -21,6 +21,7 @@
     - php-gd
     - php-intl
     - xdebug
+  sudo: yes
   tags:
     - programs
 
@@ -31,6 +32,7 @@
     - nginx
     - redis
     - php-fpm
+  sudo: yes
   tags:
     - programs
 
@@ -43,6 +45,7 @@
     - { key: "memory_limit", value: "1024M" }
     - { key: "upload_max_filesize", value: "30M" }
     - { key: "post_max_size", value: "30M" }
+  sudo: yes
   tags:
     - programs
 
@@ -56,6 +59,7 @@
     - "pdo_mysql"
     - "bcmath"
     - "soap"
+  sudo: yes
   tags:
     - programs
 
