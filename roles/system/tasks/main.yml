@@ -17,4 +17,3 @@
 
 - include: users.yml
 - include: graphics.yml
-- include: programs.yml
