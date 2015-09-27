@@ -1,0 +1,27 @@
+---
+- name: Install "Xorg"
+  pacman: name="{{ item }}"
+          state=present
+  with_items:
+    - xorg-server
+  tags:
+    - graphics
+
+- name: Install graphics drivers
+  pacman: name="{{ item }}"
+          state=present
+  with_items: "{{ graphics_driver_packages }}"
+  tags:
+    - graphics
+
+- name: Install Gnome Display Manager
+  pacman: name=gdm
+          state=present
+  tags:
+    - graphics
+
+- name: Install i3
+  pacman: name=i3
+          state=present
+  tags:
+    - graphics

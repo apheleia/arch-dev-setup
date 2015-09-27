@@ -1,8 +1,13 @@
 ---
 - name: Update pacman
   pacman: update_cache=yes
+  tags:
+    - system
 
 - name: Upgrade with pacman
   pacman: upgrade=yes
+  tags:
+    - system
 
 - include: users.yml
+- include: graphics.yml

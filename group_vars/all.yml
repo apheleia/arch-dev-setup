@@ -1,2 +1,7 @@
 ---
 username: "martin"
+graphics_driver_packages:
+  - "xf86-video-intel"
+  - "mesa-libgl"
+  - "libva"
+  - "libva-intel-driver"
