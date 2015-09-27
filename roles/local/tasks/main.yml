@@ -9,5 +9,18 @@
   tags:
     - system
 
+- name: Install base-devel (for AUR, etc.)
+  pacman: name=base-devel
+          state=present
+  tags:
+    - system
+
+- name: Create directory for AUR builds
+  file: path=/aur
+        state=directory
+  tags:
+    - system
+
 - include: users.yml
 - include: graphics.yml
+- include: programs.yml
