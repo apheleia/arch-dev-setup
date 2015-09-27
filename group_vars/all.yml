@@ -8,3 +8,6 @@ graphics_driver_packages:
 input_drivers:
   - "xf86-input-synaptics"
 terminal_emulator: "rxvt-unicode"
+aur_packages:
+  - "php-redis"
+  - "atom-editor"

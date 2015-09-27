@@ -1,0 +1,32 @@
+---
+- name: Download packages
+  get_url: url="https://aur.archlinux.org/cgit/aur.git/snapshot/{{ item }}.tar.gz"
+           dest="/home/{{ username }}/downloads/aur/{{ item }}.tar.gz"
+  with_items: "{{ aur_packages }}"
+  tags:
+    - programs
+    - aur
+
+- name: Unarchive packages
+  unarchive: src="/home/{{ username }}/downloads/aur/{{ item }}.tar.gz"
+             dest="/home/{{ username }}/downloads/aur"
+             copy=no
+  with_items: "{{ aur_packages }}"
+  tags:
+    - programs
+    - aur
+
+- name: Make packages editor (grab a coffee)
+  command: makepkg -cfs --noconfirm
+           chdir="/home/{{ username }}/downloads/aur/{{ item }}"
+  with_items: "{{ aur_packages }}"
+  tags:
+    - programs
+    - aur
+
+- name: Install packages
+  debug: msg="You still need to install atom using `pacman -U --noconfirm <{{ item }}>`!"
+  with_items: "{{ aur_packages }}"
+  tags:
+    - programs
+    - aur

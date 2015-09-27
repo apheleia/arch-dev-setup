@@ -1,8 +1,68 @@
 ---
+- name: Install programs
+  pacman: name="{{ item }}"
+          state=present
+  with_items:
+    - firefox
+    - nautilus
+    - nautilus-actions
+    - sushi
+    - gcc
+    - jdk8-openjdk
+    - nginx
+    - mariadb
+    - mariadb-clients
+    - mysql-workbench
+    - nodejs
+    - redis
+    - php
+    - php-fpm
+    - php-pear
+    - php-gd
+    - php-intl
+    - xdebug
+  tags:
+    - programs
+
+- name: Running services
+  service: name="{{ item }}" state=started enabled=yes
+  with_items:
+    - mariadb
+    - nginx
+    - redis
+    - php-fpm
+  tags:
+    - programs
+
+- name: Set PHP settings
+  lineinfile: dest=/etc/php/php.ini
+              regexp="^;?{{ item.key }}"
+              line="{{ item.key }} = {{ item.value }}"
+  with_items:
+    - { key: "date.timezone", value: "Europe/Berlin" }
+    - { key: "memory_limit", value: "1024M" }
+    - { key: "upload_max_filesize", value: "30M" }
+    - { key: "post_max_size", value: "30M" }
+  tags:
+    - programs
+
+- name: Enable PHP modules
+  lieninfile: dest=/etc/php/php.ini
+              regexp="^;?extension={{ item }}.so"
+              line="extension={{ item }}.so"
+  with_items:
+    - "mysql"
+    - "mysqli"
+    - "pdo_mysql"
+    - "bcmath"
+    - "soap"
+  tags:
+    - programs
+
 - name: Create directory for AUR builds
   file: path=/home/{{ username }}/downloads/aur
         state=directory
   tags:
-    - system
+    - programs
 
-- include: atom.yml
+- include: aur.yml
