@@ -1,4 +1,9 @@
 ---
 - hosts: localhost
   roles:
+    - system
+
+- hosts: localhost
+  roles:
     - local
+  remote_user: "{{ username }}"
