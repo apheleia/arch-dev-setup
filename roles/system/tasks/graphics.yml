@@ -33,8 +33,11 @@
     - graphics
 
 - name: Install i3
-  pacman: name=i3
+  pacman: name={{ item }}
           state=present
+  with_items:
+    - "i3"
+    - "dmenu"
   tags:
     - graphics
 

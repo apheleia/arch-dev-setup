@@ -7,6 +7,10 @@
     - nautilus
     - nautilus-actions
     - sushi
+    - vim
+    - tmux
+    - gnupg
+    - openssh
     - gcc
     - jdk8-openjdk
     - nginx
