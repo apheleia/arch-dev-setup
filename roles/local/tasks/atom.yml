@@ -1,0 +1,24 @@
+---
+- name: Download atom editor
+  get_url: url="https://aur.archlinux.org/cgit/aur.git/snapshot/atom-editor.tar.gz"
+           dest="/home/{{ username }}/downloads/aur/atom-editor.tar.gz"
+  tags:
+    - programs
+
+- name: Unarchive atom editor
+  unarchive: src="/home/{{ username }}/downloads/aur/atom-editor.tar.gz"
+             dest="/home/{{ username }}/downloads/aur"
+             copy=no
+  tags:
+    - programs
+
+- name: Make atom editor
+  command: makepkg -cfs
+           chdir="/home/{{ username }}/downloads/aur/atom-editor"
+  tags:
+    - programs
+
+- name: Install atom editor
+  debug: msg="You still need to install atom using `pacman -U --noconfirm <atom_package>`!"
+  tags:
+    - programs
