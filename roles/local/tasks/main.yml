@@ -28,7 +28,7 @@
 - name: Running services
   service: name="{{ item }}" state=started enabled=yes
   with_items:
-    - mariadb
+    - mysql
     - nginx
     - redis
     - php-fpm
