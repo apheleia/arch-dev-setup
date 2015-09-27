@@ -1,17 +1,23 @@
 ---
+- name: Create directory for AUR builds
+  file: path=/home/{{ username }}/downloads/aur
+        state=directory
+  tags:
+    - system
+
 - name: Download atom editor
   get_url: url="https://aur.archlinux.org/cgit/aur.git/snapshot/atom-editor.tar.gz"
-           dest="/aur/atom-editor.tar.gz"
+           dest="/home/{{ username }}/downloads/aur/atom-editor.tar.gz"
   tags:
     - programs
 
 - name: Unarchive atom editor
-  unarchive: src="/aur/atom-editor.tar.gz"
-             dest="/aur"
+  unarchive: src="/home/{{ username }}/downloads/aur/atom-editor.tar.gz"
+             dest="/home/{{ username }}/downloads/aur"
              copy=no
   tags:
     - programs
 
 - name: Install atom editor
   command: makepkg -sri
-           chdir="/aur/atom-editor"
+           chdir="/home/{{ username }}/downloads/aur/atom-editor"

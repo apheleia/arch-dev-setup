@@ -12,4 +12,5 @@ Setting up a dev machine with arch linux.
 ## Usage
 
 - run `base-setup.sh` to install a user and a basic ansible.
-- run ansible to setup machine
+- run ansible `base.yml` as root to setup machine
+- run ansible `local.yml` as normal user to setup the rest
