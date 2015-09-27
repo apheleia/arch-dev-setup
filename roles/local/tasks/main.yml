@@ -1,0 +1,8 @@
+---
+- name: Creating user {{ username }}
+  user: name="{{ username }}"
+        groups=sudoers
+        createhome=yes
+        generate_ssh_key=yes
+  tags:
+    - user
