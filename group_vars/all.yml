@@ -5,3 +5,4 @@ graphics_driver_packages:
   - "mesa-libgl"
   - "libva"
   - "libva-intel-driver"
+terminal_emulator: "rxvt-unicode"

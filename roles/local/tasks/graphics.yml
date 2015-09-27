@@ -30,3 +30,9 @@
           state=present
   tags:
     - graphics
+
+- name: Install terminal emulator "{{ terminal_emulator }}"
+  pacman: name="{{ terminal_emulator }}"
+          state=present
+  tags:
+    - graphics
