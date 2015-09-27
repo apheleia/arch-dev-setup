@@ -25,14 +25,24 @@
   tags:
     - programs
 
+- name: Initialize MariaDB
+  command: mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+  tags:
+    - programs
+
 - name: Running services
   service: name="{{ item }}" state=started enabled=yes
   with_items:
-    - mysql
+    - mysqld
     - nginx
     - redis
     - php-fpm
   sudo: yes
+  tags:
+    - programs
+
+- name: Secure MySQL
+  command: mysql_secure_installation
   tags:
     - programs
 
