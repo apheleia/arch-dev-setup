@@ -25,9 +25,16 @@
   tags:
     - programs
 
+- name: Checking for MySQL DB
+  stat: path=/var/lib/mysql
+  register: mysql_db
+  tags:
+    - programs
+
 - name: Initialize MariaDB
   command: mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
   sudo: yes
+  when: mysql_db.stat.exists == False
   tags:
     - programs
 
