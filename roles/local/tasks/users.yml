@@ -1,7 +1,10 @@
 ---
-- name: Install "sudo"
-  pacman: name=sudo
+- name: Install "sudo", "openssh"
+  pacman: name="{{ item }}"
           state=present
+  with_items:
+    - sudo
+    - openssh
   tags:
     - users
 
