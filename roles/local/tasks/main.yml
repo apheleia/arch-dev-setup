@@ -71,6 +71,38 @@
   tags:
     - programs
 
+- name: Disable open_basedir
+  lineinfile: dest=/etc/php/php.ini
+              regexp="^;?open_basedir"
+              line=";open_basedir ="
+  sudo: yes
+  tags:
+    - programs
+
+- name: Update PECL channel
+  command: pecl channel-update pecl.php.net
+  sudo: yes
+  tags:
+    - programs
+
+- name: Install PHP Redis
+  command: pecl install redis
+  sudo: yes
+  ignore_errors: True
+  notify: restart php-fpm
+  tags:
+    - programs
+
+- name: Enable PHP Redis module
+  copy: src=redis.ini
+        dest=/etc/php/conf.d/redis.ini
+        owner=root
+        group=root
+        mode=0644
+  sudo: yes
+  tags:
+    - programs
+
 - name: Enable PHP modules
   lineinfile: dest=/etc/php/php.ini
               regexp="^;?extension={{ item }}.so"
