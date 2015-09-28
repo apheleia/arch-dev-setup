@@ -25,6 +25,8 @@
     - php-gd
     - php-intl
     - xdebug
+    - xorg-xrandr
+    - arandr
   sudo: yes
   tags:
     - programs
