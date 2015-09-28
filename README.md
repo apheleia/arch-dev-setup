@@ -15,3 +15,4 @@ Setting up a dev machine with arch linux.
 - run ansible `base.yml` as root to setup machine
 - run ansible `local.yml` as normal user to setup the rest
  - `$ ansible-playbook local.yml --ask-become-pass`
+ - `$ ansible-playbook local.yml --ask-become-pass --skip-tags aur` if you do not want to install the AUR packages

@@ -1,4 +1,37 @@
 ---
+- name: Enable multilib [1/2]
+  lineinfile: dest=/etc/pacman.conf
+              regexp="^#?\[multilib\]"
+              line="[multilib]"
+  sudo: yes
+  tags:
+    - programs
+
+- name: Enable multilib [2/2]
+  lineinfile: dest=/etc/pacman.conf
+              regexp="^#?Include = /etc/pacman.d/mirrorlist"
+              line="Include = /etc/pacman.d/mirrorlist"
+              insertafter="^#?\[multilib\]"
+  sudo: yes
+  register: multilib
+  tags:
+    - programs
+
+- name: Update pacman
+  pacman: update_cache=yes
+  when: multilib.changed
+  sudo: yes
+  tags:
+    - programs
+
+- name: Upgrade with pacman
+  pacman: upgrade=yes
+  when: multilib.changed
+  sudo: yes
+  tags:
+    - programs
+
+
 - name: Install programs
   pacman: name="{{ item }}"
           state=present
@@ -27,6 +60,9 @@
     - xdebug
     - xorg-xrandr
     - arandr
+    - skype
+    - alsa-utils
+    - bind-tools
   sudo: yes
   tags:
     - programs

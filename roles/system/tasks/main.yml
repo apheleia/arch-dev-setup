@@ -15,5 +15,11 @@
   tags:
     - system
 
+- name: Copy resolv.conf
+  copy: src=resolv.conf
+        dest=/etc/resolv.conf.head
+  tags:
+    - system
+
 - include: users.yml
 - include: graphics.yml

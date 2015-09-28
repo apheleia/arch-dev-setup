@@ -10,3 +10,5 @@ input_drivers:
 terminal_emulator: "rxvt-unicode"
 aur_packages:
   - "atom-editor"
+  - "libcurl-compat"
+  - "spotify-beta"

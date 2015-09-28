@@ -46,3 +46,29 @@
           state=present
   tags:
     - graphics
+
+- name: Copy i3 conf
+  template: src=i3.conf.j2
+            dest=/home/{{ username }}/.i3/config
+            owner="{{ username }}"
+            group="{{ username }}"
+  tags:
+    - graphics
+
+- name: Create i3status conf directory
+  file: path=/home/{{ username }}/.config/i3status
+        state=directory
+  tags:
+    - graphics
+
+- name: Copy i3status conf
+  copy: src=i3status.conf
+        dest=/home/{{ username }}/.config/i3status/config
+  tags:
+    - graphics
+
+- name: Copy wallpaper
+  copy: src=wallpaper.png
+        dest=/home/{{ username }}/.i3/wallpaper.png
+  tags:
+    - graphics

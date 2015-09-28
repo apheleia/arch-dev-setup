@@ -25,7 +25,7 @@
     - aur
 
 - name: Install packages
-  debug: msg="You still need to install atom using `pacman -U --noconfirm <{{ item }}>`!"
+  debug: msg="You still need to install a package using `pacman -U --noconfirm {{ item }}`!"
   with_items: "{{ aur_packages }}"
   tags:
     - programs
